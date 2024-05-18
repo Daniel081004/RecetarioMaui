@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecetarioMaui.Views.InicioView"
+             Title="InicioView"
+             xmlns:viewmodels="clr-namespace:RecetarioMaui.ViewModels" x:DataType="viewmodels:RecetarioViewModel"
+             BackgroundImageSource="fondoinicio.png"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Grid>
+            <Button Command="{Binding VerRecetarioCommand}" Text="Abrir" WidthRequest="250" Background="#fb6f92" FontSize="25" FontAttributes="Bold" VerticalOptions="Center"></Button>
+        </Grid>
+        <Grid VerticalOptions="End" HorizontalOptions="End">
+            <Label HorizontalOptions="Center" Text="Autor: Daniel De León" Margin="0,0,15,15" FontSize="18" FontAttributes="Bold" TextColor="#f9154e"></Label>
+        </Grid>
+    </Grid>
+</ContentPage>

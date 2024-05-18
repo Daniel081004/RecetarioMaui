@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecetarioMaui.Views.ListaRecetasView"
+             Title="ListaRecetasView"
+             xmlns:models="clr-namespace:RecetarioMaui.Models"
+             BackgroundImageSource="fondorecetas.png"
+             Shell.NavBarIsVisible="False"
+             x:Name="listaRecetas"
+             >
+    <Grid>
+        <ScrollView>
+            <StackLayout>
+                <Label HorizontalOptions="Center" FontSize="30" Margin="5">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Recetario " TextColor="Black"></Span>
+                            <Span Text="Perron" TextColor="DeepPink"></Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout>
+                    <CollectionView ItemsSource="{Binding Recetas}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:RecetaModel">
+                                <StackLayout>
+                                    <Frame BackgroundColor="#90000000" BorderColor="Transparent" Margin="5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.VerRecetaInformacionCommand}" CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </Frame.GestureRecognizers>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Image Grid.Column="0" Grid.RowSpan="3" Source="{Binding Imagen}" HeightRequest="130" WidthRequest="130" Aspect="AspectFill"></Image>
+                                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Nombre}" FontAttributes="Bold" FontSize="18" HorizontalOptions="Center"></Label>
+                                            <Label Grid.Column="1" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Tiempo de preparacion: " FontAttributes="Bold"></Span>
+                                                        <Span Text="{Binding TiempoPreparacion}"></Span>
+                                                        <Span Text=" Minutos"></Span>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Grid.Column="1" Grid.Row="2" HorizontalOptions="End" VerticalOptions="End">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Ultima Elaboracion: " FontAttributes="Bold"></Span>
+                                                        <Span Text="{Binding UltimaElaboracion, StringFormat='{0:d MMMM yyyy}'}"></Span>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        <ImageButton Command="{Binding VerAgregarCommand}"  Source="botonagregar.png" HeightRequest="90" WidthRequest="90" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Transparent"></ImageButton>
+    </Grid>
+</ContentPage>

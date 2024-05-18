@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecetarioMaui.Views.EditarRecetaView"
+             Title="EditarRecetaView"
+             Shell.NavBarIsVisible="False"
+         BackgroundImageSource="agregareditarfondo.jpg"
+         xmlns:viewmodels="clr-namespace:RecetarioMaui.ViewModels" x:DataType="viewmodels:RecetarioViewModel">
+    <ScrollView>
+        <Grid>
+            <StackLayout Margin="10">
+                <Label TextColor="Black">Nombre:</Label>
+                <Entry TextColor="Black" BackgroundColor="White" Text="{Binding Receta.Nombre}"></Entry>
+                <Label TextColor="Black">Tiempo de Preparacion en minutos:</Label>
+                <Entry TextColor="Black" BackgroundColor="White" Text="{Binding Receta.TiempoPreparacion}" Keyboard="Numeric"></Entry>
+                <Label TextColor="Black">Ingredientes:</Label>
+                <Editor TextColor="Black" BackgroundColor="White" AutoSize="TextChanges" Text="{Binding Receta.Ingredientes}"></Editor>
+                <Label TextColor="Black">Procedimiento:</Label>
+                <Editor TextColor="Black" BackgroundColor="White" AutoSize="TextChanges" Text="{Binding Receta.Procedimineto}"></Editor>
+                <Label TextColor="Black">URL de la Imagen</Label>
+                <Entry TextColor="Black" BackgroundColor="White" Text="{Binding Receta.Imagen}"></Entry>
+                <Image Source="{Binding Receta.Imagen}" WidthRequest="400" HeightRequest="400" Aspect="AspectFill"></Image>
+
+                <Label Text="{Binding Errores}" TextColor="Red" FontSize="25"></Label>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End">
+                    <Button BackgroundColor="Gold" Text="Guaradar" Command="{Binding EditarCommand}" Margin="7"></Button>
+                    <Button BackgroundColor="Gold" Text="Cancelar" Command="{Binding VerRecetarioCommand}" Margin="7"></Button>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+    
+</ContentPage>

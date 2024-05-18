@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecetarioMaui.Views.EliminarRecetaView"
+                 Shell.NavBarIsVisible="False"
+BackgroundImageSource="agregareditarfondo.jpg"
+xmlns:viewmodels="clr-namespace:RecetarioMaui.ViewModels" x:DataType="viewmodels:RecetarioViewModel"
+             Title="EliminarRecetaView">
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span TextColor="Black" FontSize="30" Text="¿Estas seguro de eliminar "></Span>
+                    <Span TextColor="Black" FontSize="30" Text="{Binding Receta.Nombre}"></Span>
+                    <Span TextColor="Black" FontSize="30" Text="?"></Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button BackgroundColor="Gold" Margin="8" Text="Aceptar" Command="{Binding EliminarCommand}"></Button>
+            <Button BackgroundColor="Gold" Margin="8" Text="Cancelar" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.VerRecetaInformacionCommand}" CommandParameter="{Binding Receta}"></Button>
+        </StackLayout>
+        
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecetarioMaui.Views.RecetaInformacionView"
+             xmlns:viewmodel="clr-namespace:RecetarioMaui.ViewModels" x:DataType="viewmodel:RecetarioViewModel"
+             BackgroundImageSource="fondorecetas.png"
+             Shell.NavBarIsVisible="False"
+             Title="RecetaInformacionView">
+    <ScrollView>
+        <VerticalStackLayout Padding="5">
+            <Label HorizontalOptions="End" VerticalOptions="End">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span TextColor="Black" Text="Ultima Elaboracion: " FontAttributes="Bold"></Span>
+                        <Span TextColor="Black" Text="{Binding Receta.UltimaElaboracion, StringFormat='{0:d MMMM yyyy}'}"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Image Source="{Binding Receta.Imagen}" HeightRequest="250" WidthRequest="250" Aspect="AspectFill"></Image>
+            <Label TextColor="Black" Text="{Binding Receta.Nombre}" FontSize="35" HorizontalOptions="Center"></Label>
+            <Label HorizontalOptions="End" FontSize="15" TextColor="Black">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span TextColor="Black" Text="Tiempo de preparacion: " ></Span>
+                        <Span TextColor="Black" Text="{Binding Receta.TiempoPreparacion}" FontAttributes="Bold"></Span>
+                        <Span TextColor="Black" Text=" Minutos" FontAttributes="Bold"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="20,0" FontAttributes="Italic" FontSize="20" TextColor="Gray" Text="{Binding Receta.Ingredientes}"></Label>
+            <Label Margin="20,0" FontSize="20" TextColor="Black" Text="{Binding Receta.Procedimineto}"></Label>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Command="{Binding VerEditarCommand}" FontAttributes="Bold" BackgroundColor="DeepPink" Text="Editar" Margin="7"></Button>
+                <Button Command="{Binding VerRecetarioCommand}" FontAttributes="Bold" BackgroundColor="DeepPink" Text="Regresar"  Margin="7"></Button>
+                <Button Command="{Binding VerEliminarCommand}" FontAttributes="Bold" BackgroundColor="DeepPink" Text="Eliminar" Margin="7"></Button>
+                <Button Command="{Binding PrepararRecetaCommand}" FontAttributes="Bold" BackgroundColor="DeepPink" Text="Preparar" Margin="7"></Button>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>
